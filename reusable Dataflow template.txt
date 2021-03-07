@@ -1,0 +1,8 @@
+python3 apache_beam_tech_test.py 
+--project apache-beam-tech-test
+--runner DataflowRunner 
+--staging_location gs://staging_bucket/ 
+--temp_location gs://temp_storage/  
+--template_location gs://templates/csvjsontemplate
+--region europe-west2 
+--job_name dataflowcsvjson
