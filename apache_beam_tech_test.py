@@ -19,6 +19,7 @@ class CsvToJsonConvertion(beam.DoFn):
     def process(self, something):
        df = pd.read_csv (self.inputFilePath)
        df.columns =['Transaction unique identifier','Price','Date of Transfer','Postcode','Property Type','Old/New','Duration','PAON','SAON','Street','Locality','Town/City','District','County','PPD Category Type','Record Status']
+       df.drop_duplicates(subset='Transaction unique identifier', keep='first', inplace=True)
        df2 = df.sort_values(by=['Postcode','Street','SAON','PAON'])
        df2.to_json(self.outputFilePath,orient='records', lines=True)
 
